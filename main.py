@@ -22,7 +22,8 @@ def on_startup():
 # -------------------------------
 # CORS (Allow frontend to connect)
 # -------------------------------
-cors_origins = os.getenv("CORS_ORIGINS", "http://localhost:5173","*").split(",")
+# cors_origins = os.getenv("CORS_ORIGINS", "http://localhost:5173").split(",")
+cors_origins = os.getenv("CORS_ORIGINS", "http://localhost:5173,*").split(",")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[origin.strip() for origin in cors_origins if origin.strip()],
