@@ -22,8 +22,11 @@ def on_startup():
 # -------------------------------
 # CORS (Allow frontend to connect)
 # -------------------------------
-# cors_origins = os.getenv("CORS_ORIGINS", "http://localhost:5173").split(",")
-cors_origins = os.getenv("CORS_ORIGINS", "http://localhost:5173,*").split(",")
+cors_origins = os.getenv(
+    "CORS_ORIGINS",
+    "http://localhost:5173, http://127.0.0.1:5173, https://frontend-five-mauve-46.vercel.app"
+).split(",")
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[origin.strip() for origin in cors_origins if origin.strip()],
