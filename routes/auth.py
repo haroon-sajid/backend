@@ -11,6 +11,12 @@ router = APIRouter(tags=["Authentication"])
 # Password hashing context
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
+def hash_password(password: str) -> str:
+    # bcrypt 72 char max support karta hai
+    if len(password) > 72:
+        password = password[:72]
+    return pwd_context.hash(password)
+
 # -------------------------------
 # Helper functions
 # -------------------------------
